@@ -1,0 +1,63 @@
+<view class="container">
+<!-- 标题 -->
+ <h4>图书管理小程序</h4>
+
+ <!-- 搜索 -->
+  <view class='page_row' bindtap="suo">
+      <view class="search">
+        <view class="df search_arr">
+          <icon class="searchcion" size='20' type='search'></icon>
+          <input class="" placeholder="请输入关键字" value="{{searchValue}}"/>
+         <button
+  type="primary" size="mini">搜索</button>
+        </view>
+      </view>
+    </view>
+</view>
+
+<!-- 图书列表 -->
+<block>
+  <view class="list_book">
+    <view class="book_img">
+      <image src="../../images/book_js.jpg"></image>
+    </view>
+    <view class="book_info">
+     <view><text>书名:</text>JavaScript高级程序设计</view>
+      <view><text>价格:</text>99.00元</view>
+      <view><text>出版社:</text>人民邮电出版社</view>
+      <view><text>作者:</text>[美] Nicholas C. Zakas</view>
+      <view><text>销售量:</text>23222332</view>
+    </view>
+  </view>
+</block>
+
+<block>
+  <view class="list_book">
+    <view class="book_img">
+      <image src="../../images/book_html.jpg"></image>
+    </view>
+    <view class="book_info">
+      <view><text>书名:</text>HTML5从入门到精通</view>
+      <view><text>价格:</text>59.80元</view>
+      <view><text>出版社:</text>清华大学出版社</view>
+      <view><text>作者:</text>明日科技 </view>
+      <view><text>销售量:</text>23827</view>
+    </view>
+  </view>
+</block>
+
+
+<block>
+  <view class="list_book">
+    <view class="book_img">
+      <image src="../../images/book_css.jpg"></image>
+    </view>
+    <view class="book_info">
+      <view><text>书名:</text>Div+CSS网页样式与布局从入门到精通</view>
+      <view><text>价格:</text>33.30元</view>
+      <view><text>出版社:</text>人民邮电出版社</view>
+      <view><text>作者:</text>刘西杰</view>
+      <view><text>销售量:</text>19283</view>
+    </view>
+  </view>
+</block>
