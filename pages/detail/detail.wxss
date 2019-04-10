@@ -36,3 +36,16 @@
   color:#111;
   margin-right:10rpx;
 }
+
+.book_content{
+  padding:10rpx;
+}
+.book_content h3{
+  font-weight:bold;
+}
+.book_content view{
+  margin-top:15rpx;
+  text-indent:40rpx;
+  font-size:34rpx;
+  color:#444;
+}

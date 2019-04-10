@@ -1,17 +1,25 @@
-<view>
- <block wx:for="{{list}}" wx:key="name" class="list">
-
+<view class="container">
+ <block  class="list">
   <view class="list_book">
     <view class="book_img">
-      <image  style="background-color: #eeeeee;" src="{{item.img}}"></image>
+      <image  style="background-color: #eeeeee;" src="{{list.img}}"></image>
     </view>
     <view class="book_info">
-      <view><text>书名:</text>{{item.title}}</view>
-      <view><text>价格:</text>{{item.price}}元</view>
-      <view><text>出版社:</text>{{item.address}}</view>
-      <view><text>作者:</text>{{item.name}} </view>
-      <view><text>销售量:</text>{{item.num}}</view>
+      <view><text>书名:</text>{{list.title}}</view>
+      <view><text>价格:</text>{{list.price}}元</view>
+      <view><text>出版社:</text>{{list.address}}</view>
+      <view><text>作者:</text>{{list.name}} </view>
+      <view><text>销售量:</text>{{list.num}}</view>
     </view>
   </view>
 </block>
+
+<!-- content -->
+<view class="book_content">
+   <h3>内容简介</h3>
+   <view>
+   {{list.text}}
+   </view>
+</view>
+
 </view>

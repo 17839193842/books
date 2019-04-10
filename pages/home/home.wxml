@@ -1,6 +1,6 @@
 <view class="container">
 <!-- 标题 -->
- <h4>图书管理小程序</h4>
+ <!-- <h4>图书管理小程序</h4> -->
 
  <!-- 搜索 -->
   <view class='page_row' bindtap="suo">

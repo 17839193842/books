@@ -19,7 +19,7 @@ Page({
     console.log(this.data.list)
   },
   goBookDetail: function (e) { 
-    var bookId = e.currentTarget.dataset.bookid;         console.log(bookId); 
+    var bookId = e.currentTarget.dataset.bookid;
     wx.navigateTo({ 
       url: '../detail/detail?id='+bookId
      }) 
