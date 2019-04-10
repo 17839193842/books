@@ -22,4 +22,24 @@
    </view>
 </view>
 
+<!-- 购物车按钮 -->
+<view class="book_btn">
+  <button
+  type="primary"
+  size="default"
+  bindtap="collect"
+  data-id="{{list.id}}"
+>
+  收藏
+</button>
+<button
+  type="warn"
+  size="default"
+  bindtap="addShop"
+  data-id="{{list.id}}"
+>
+  加入购物车
+</button>
+</view>
+
 </view>

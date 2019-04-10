@@ -1,0 +1,54 @@
+<view class="container">
+
+<block wx:for="{{list}}" wx:key="name">
+  <view class="list_book">
+  <!-- 选中 -->
+    <view class="book_check">
+      <label class="checkbox" >
+        <checkbox checked="{{item.checked}}" bindtap="checkboxChange" data-i="{{item.id}}" value="{{item.id}}"></checkbox>
+      </label>
+    </view>
+    <!-- logo -->
+    <view class="book_img">
+      <image  style="background-color: #eeeeee;" src="{{item.img}}"></image>
+    </view>
+    <!-- info -->
+    <view class="book_info">
+      <view><text>书名:</text>{{item.title}}</view>
+      <view><text>价格:</text>{{item.price}}元</view>
+      <view><text>出版社:</text>{{item.address}}</view>
+      <view><text>作者:</text>{{item.name}} </view>
+      <view><text>销售量:</text>{{item.num}}</view>
+    </view>
+   <!-- del -->
+    <view class="book_del">
+       <button
+    type="warn"
+    size="mini"
+    bindtap="delShop" data-i="{{item.id}}">
+      删除
+      </button>
+    </view>
+  </view>
+</block>
+
+<!-- 结算 -->
+<view class="book_sum">
+  <view>
+   <checkbox-group bindchange="checkboxAll">
+      <label class="checkbox">
+        <checkbox checked="{{isCheckAll}}" value="all">全选    </checkbox>
+      </label>
+    </checkbox-group>
+  </view>
+  <view>
+  总计: <text>{{sum}} 元</text>
+  </view>
+   <button
+    type="warn"
+    size="default"
+    bindtap="warn" bindtap="sumTotal">
+      结算
+      </button>
+</view>
+</view>

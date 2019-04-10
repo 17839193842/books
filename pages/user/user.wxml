@@ -1,3 +1,19 @@
 <view class="container">
-我的
+   <!-- 我的购物车 -->
+   <view class="book_shop">
+     <view bindtap="goShopping">
+       <image src="../../images/shop.png"></image>
+       <text style="flex:1;margin-left:15rpx;">我的购物车</text>  
+       <text style="width:100rpx;"> > </text>
+      </view>
+   </view>
+   <!-- 我的收藏 -->
+   <view class="book_collect">
+    <view bindtap="goCollect">
+       <image src="../../images/collect.png"></image>
+       <text style="flex:1;margin-left:15rpx;">我的收藏</text>  
+       <text style="width:100rpx;">  > </text>
+      </view>
+   </view>
+
 </view>

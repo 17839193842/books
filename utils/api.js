@@ -25,7 +25,8 @@ function ajax(data = '', fn, method = "get", header = {}) {
         'text': '@cparagraph(30)',
         'address': "@county(true)",
         'num': '@integer(0,100)',//库存数量  
-        'price': '@integer(100,2000)'//现价，单位：元
+        'price': '@integer(100,2000)',//现价，单位：元
+        'checked':false
       }]
     })
     // 输出结果

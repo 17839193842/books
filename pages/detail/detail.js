@@ -19,6 +19,26 @@ Page({
     });
     console.log(this.data.list)
  
+  },
+  addShop:function(e){
+    console.log(e.currentTarget.dataset.id);
+    wx.showToast({ // 显示Toast
+      title: '加入购物车成功',
+      icon: 'success',
+      duration: 2000
+    })
+    this.data.list.shoped=true;
+    console.log(this.data.list)
+  },
+  collect:function(e){
+    console.log(e.currentTarget.dataset.id);
+    wx.showToast({ // 显示Toast
+      title: '收藏成功',
+      icon: 'success',
+      duration: 2000
+    })
+    this.data.list.collected = true;
+    console.log(this.data.list)
   }
 
 })

@@ -3,7 +3,9 @@
     "pages/home/home",
     "pages/logs/logs",
     "pages/user/user",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/shopping/shopping",
+    "pages/collect/collect"
   ],
   "window":{
     "backgroundTextStyle":"light",
