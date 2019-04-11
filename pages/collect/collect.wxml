@@ -1,3 +1,27 @@
 <view class="container">
-收藏
+<block wx:for="{{list}}" wx:key="name" class="list">
+
+  <view class="list_book">
+    <view class="book_img">
+      <image  style="background-color: #eeeeee;" src="{{item.img}}"></image>
+    </view>
+    <view class="book_info">
+      <view><text>书名:</text>{{item.title}}</view>
+      <view><text>价格:</text>{{item.price}}元</view>
+      <view><text>出版社:</text>{{item.address}}</view>
+      <view><text>作者:</text>{{item.name}} </view>
+      <view><text>销售量:</text>{{item.num}}</view>
+    </view>
+    <!-- 删除 -->
+    <view class="book_del">
+    <button
+    type="warn"
+    size="mini"
+    bindtap="delShop" data-i="{{item.id}}">
+      删除
+      </button>
+    </view>
+  </view>
+</block>
+
 </view>

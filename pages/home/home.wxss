@@ -52,6 +52,7 @@
    padding-left:30rpx;
    padding-right:30rpx;
    line-height:80rpx;
+   z-index:999;
 }
 
 /* 图书列表 */
@@ -92,4 +93,8 @@
   font-weight: bold;
   color:#111;
   margin-right:10rpx;
+}
+.empty{
+  text-align: center;
+  font-size:40rpx;
 }
