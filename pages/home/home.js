@@ -39,25 +39,34 @@ Page({
     var arr = [];
     console.log(key+'key')
     if(key!=''){
-      for (let i in valueList) {
-        if (valueList[i].title.indexOf(key) >= 0) {//查找
-          arr.push(valueList[i])
+      wx.showToast({ // 显示Toast
+        title: '加载中',
+        icon: 'loading',
+        duration: 100,
+        success:function(){
+          for (let i in valueList) {
+            if (valueList[i].title.indexOf(key) >= 0) {//查找
+              arr.push(valueList[i])
+            }
+          }
+          if (arr.length == 0) {
+            that.setData({
+              list: []
+            })
+          } else {
+            that.setData({
+              list: arr//在页面显示找到的数据
+            })
+          }
+
         }
-      }
-      if (arr.length == 0) {
-        that.setData({
-          list: []
-        })
-      } else {
-        that.setData({
-          list: arr//在页面显示找到的数据
-        })
-      }
+      })
+      
     }else{
       wx.showToast({ // 显示Toast
-        title: '搜索字段不能为空',
-        icon: 'success',
-        duration: 2000
+        title: '搜索不能为空',
+        icon: 'loading',
+        duration: 1000
       })
     }
     

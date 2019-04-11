@@ -5,7 +5,8 @@
     "pages/user/user",
     "pages/detail/detail",
     "pages/shopping/shopping",
-    "pages/collect/collect"
+    "pages/collect/collect",
+    "pages/bookentry/bookentry"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -27,8 +28,8 @@
       {
         "selectedIconPath": "images/books.png",
         "iconPath": "images/books.png",
-        "pagePath": "pages/logs/logs",
-        "text": "日志"
+        "pagePath": "pages/bookentry/bookentry",
+        "text": "图书录入"
       },
       {
         "selectedIconPath": "images/user-in.png",

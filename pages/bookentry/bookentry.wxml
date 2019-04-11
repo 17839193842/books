@@ -1,0 +1,69 @@
+<view class="container">
+ 图书录入
+ <block wx:for="{{list}}" wx:key="name" class="list">
+
+  <view class="list_book" bindtap="goBookDetail" data-bookId="{{item.id}}">
+    <view class="book_img">
+      <image  style="background-color: #eeeeee;" src="{{item.img}}"></image>
+    </view>
+    <view class="book_info">
+      <view><text>书名:</text>{{item.title}}</view>
+      <view><text>价格:</text>{{item.price}}元</view>
+      <view><text>出版社:</text>{{item.address}}</view>
+      <view><text>作者:</text>{{item.name}} </view>
+      <view><text>销售量:</text>{{item.num}}</view>
+    </view>
+  </view>
+</block>
+
+<!-- 图书录入按钮 -->
+  <button class="bookentry_btn" type="primary" bindtap="showModal">
+   录入图书
+  </button>
+</view>
+
+<!-- 自定义模态框 -->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">录入图书</view>
+  <!-- 图书销量 -->
+  <view class="modal-content">
+   <label>销售量:</label>
+    <view class="modal-input">
+         <input bindinput="inputChange" class="input" placeholder="请输入数量"></input>
+    </view>
+  </view>
+  <!-- 图书价格 -->
+  <view class="modal-content">
+   <label>价格:</label>
+    <view class="modal-input">
+         <input bindinput="priceChange" class="input" placeholder="请输入价格"></input>
+    </view>
+  </view>
+  <!-- 书名 -->
+   <view class="modal-content">
+   <label>书名:</label>
+    <view class="modal-input">
+         <input bindinput="titleChange" class="input" placeholder="请输入书名"></input>
+    </view>
+  </view>
+  <!-- 作者 -->
+   <view class="modal-content">
+   <label>作者:</label>
+    <view class="modal-input">
+         <input bindinput="nameChange" class="input" placeholder="请输入作者"></input>
+    </view>
+  </view>
+  <!-- 出版社 -->
+   <view class="modal-content">
+   <label>出版社:</label>
+    <view class="modal-input">
+         <input bindinput="addressChange" class="input" placeholder="请输入出版社"></input>
+    </view>
+  </view>
+
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+  </view>
+</view>
