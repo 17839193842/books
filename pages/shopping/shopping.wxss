@@ -14,7 +14,7 @@
    height:300rpx;
 }
 .book_check{
-  width:15%;
+  width:12%;
   text-align: center;
 }
 .book_img{
@@ -27,13 +27,13 @@
    height:100%;
 }
 .book_info{
-  width:50%;
+  width:45%;
   display:flex;
   flex-direction: column;
   height:100%;
 }
 .book_del{
-  width:10%;
+  width:18%;
   height:100%;
   }
 .book_del button{
@@ -78,4 +78,31 @@
 } 
 .book_sum view{
   line-height:100rpx;
+}
+.book_del{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.book_del view{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width:120rpx;
+  height:50rpx;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 8rpx;
+}
+.book_del view text{
+  padding:0 10rpx;
+  height:50rpx;
+}
+.book_del view input{
+  text-align: center;
+  flex:1;
+  border-left:1px solid #ccc;
+  border-right:1px solid #ccc;
 }

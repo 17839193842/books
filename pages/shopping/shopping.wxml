@@ -28,6 +28,11 @@
     bindtap="delShop" data-i="{{item.id}}">
       删除
       </button>
+      <view>
+       <text bindtap="minusShop" data-id="{{item.id}}">-</text>
+       <input bindinput='bindvalue' value="{{item.total}}"></input>
+        <text bindtap="plusShop" data-id="{{item.id}}">+</text>
+      </view>
     </view>
   </view>
 </block>

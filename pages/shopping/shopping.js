@@ -19,6 +19,7 @@ Page({
 
     console.log(this.data.list)
   },
+  // 单选或多选
   checkboxChange:function(e){
     var index = e.target.dataset.i;
     var that=this;
@@ -39,6 +40,7 @@ Page({
     })
     this.sumTotal();
   },
+  // 全选
   checkboxAll:function(e){
     var that=this;
     let cartList=that.data.list,sum=0;
@@ -48,7 +50,7 @@ Page({
       })
       cartList.forEach((item,index)=>{
         item['checked']=true;
-        sum+=parseInt(item.price);
+        sum+=parseInt(item.price)*parseInt(item.total);
       })
     }else{
       that.setData({
@@ -66,32 +68,92 @@ Page({
     })
   
   },
+  // 结算
   sumTotal:function(){
       var cartList = this.data.list;
       var sum = 0;
     for (var i = 0; i < cartList.length; i++) {
       var good = cartList[i];
         if (good.checked) {
-         sum+=good.price;
+         sum+=good.price*good.total;
         }
       }
       sum = sum.toFixed(2);
       this.setData({
        sum:sum
       })
-
   },
+  // 删除
   delShop:function(e){
-    var index = e.target.dataset.i;
-    var cartList=this.data.list;
-    for(var i=0;i<cartList.length;i++){
-      if(cartList[i].id==index){
-        cartList.splice(i,1);
+    var that=this;
+    wx.showModal({
+      title: '提示',
+      content: '确认要删除？',
+      confirmText: '确认',
+      cancelText: '取消',
+      success: function (res) {
+        if (res.confirm) {
+          console.log("确认");
+          var index = e.target.dataset.i;
+          var cartList = that.data.list;
+          for (var i = 0; i < cartList.length; i++) {
+            if (cartList[i].id == index) {
+              cartList.splice(i, 1);
+            }
+          }
+          console.log(cartList)
+          that.setData({
+            list: cartList
+          })
+
+        } else if (res.cancel) {
+          console.log('用户点击取消删除操作')
+        }
       }
-    }
-   console.log(cartList)
-    this.setData({
+    })  
+  },
+  // 加购物车数量
+  plusShop:function(e){
+    var cartList=this.data.list;
+    var id = e.currentTarget.dataset.id;
+    var that=this;
+    cartList.forEach((item,index)=>{
+      if(item['id']==id){
+        cartList[index].total++;
+        if (cartList[index].checked==true){
+          this.sumTotal();
+        }
+      }
+    })
+    that.setData({
       list:cartList
+    })
+    
+  },
+  // 减购物车数量
+  minusShop:function(e){
+    var cartList = this.data.list;
+    var id = e.currentTarget.dataset.id;
+    var that = this;
+    cartList.forEach((item, index) => {
+      if (item['id'] == id) {
+        if (cartList[index].total>1){
+          cartList[index].total--;
+        }else{
+          cartList[index].total=1;
+          wx.showToast({ // 显示Toast
+            title: '最小数量为1',
+            icon: 'success',
+            duration: 1500
+          })
+        }
+        if (cartList[index].checked == true) {
+          this.sumTotal();
+        }
+      }
+    })
+    that.setData({
+      list: cartList
     })
   }
 
