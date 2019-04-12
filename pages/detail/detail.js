@@ -25,7 +25,7 @@ Page({
   },
   addShop:function(e){
     var that=this;
-    var shopList = wx.getStorageSync('shopList');
+    var shopList = wx.getStorageSync('shopList') || [] ;
     var id=e.currentTarget.dataset.id;
         this.data.list.shoped = true;
         shopList.push(that.data.list)
@@ -44,7 +44,7 @@ Page({
   collect:function(e){
     var that=this;
     var id=e.currentTarget.dataset.id;
-    var collectList = wx.getStorageSync('collectList');
+    var collectList = wx.getStorageSync('collectList') || [] ;
     collectList.push(that.data.list);
     wx.setStorageSync('collectList', collectList);
     wx.showToast({ // 显示Toast

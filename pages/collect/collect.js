@@ -15,7 +15,7 @@ Page({
     //     list: res.data
     //   })
     // });
-    var collectList = wx.getStorageSync('collectList');
+    var collectList = wx.getStorageSync('collectList') || [];
     console.log(collectList)
    that.setData({
      list:collectList

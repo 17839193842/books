@@ -1,8 +1,8 @@
 <view class="container">
- 请图书录入
+ 图书管理
  <block wx:for="{{list}}" wx:key="name" class="list">
 
-  <view class="list_book" bindtap="goBookDetail" data-bookId="{{item.id}}">
+  <view class="list_book">
     <view class="book_img">
       <image  style="background-color: #eeeeee;" src="{{item.img}}"></image>
     </view>
@@ -12,6 +12,20 @@
       <view><text>价格:</text>{{item.price}}元</view>
       <view><text>出版社:</text>{{item.address}}</view> 
       <view><text>销售量:</text>{{item.num}}</view>
+    </view>
+    <view class="book_del">
+      <button
+    type="warn"
+    size="mini"
+    bindtap="delEntry" data-i="{{item.id}}">
+      删除
+      </button>
+       <button
+    type="default"
+    size="mini"
+    bindtap="updateBook" data-id="{{item.id}}" style="background:#ddd;">
+      修改
+      </button>
     </view>
   </view>
 </block>
@@ -25,12 +39,14 @@
 <!-- 自定义模态框 -->
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 <view class="modal-dialog" wx:if="{{showModal}}">
-  <view class="modal-title">录入图书</view>
+ <text class="modal-del" bindtap="cancelModal">X</text>
+  <view class="modal-title" wx:if="{{update}}">修改图书</view>
+  <view class="modal-title" wx:else>录入图书</view>
   <!-- 书名 -->
    <view class="modal-content">
    <label>书名:</label>
     <view class="modal-input">
-         <input bindinput="titleChange" class="input" placeholder="请输入书名" bindblur="bindblur"></input>
+         <input bindinput="titleChange" class="input" placeholder="请输入书名" bindblur="bindblur" value="{{updateBook.title}}"></input>
     </view>
     <view class="modal-alert">
      <text style="margin-left:10rpx;color:red;">*</text>
@@ -44,7 +60,7 @@
   <view class="modal-content">
    <label>价格:</label>
     <view class="modal-input">
-         <input bindinput="priceChange" class="input" placeholder="请输入价格"></input>
+         <input bindinput="priceChange" class="input" placeholder="请输入价格" value="{{updateBook.price}}"></input>
     </view>
     <view class="modal-alert">
     </view>
@@ -54,7 +70,7 @@
    <view class="modal-content">
    <label>作者:</label>
     <view class="modal-input">
-         <input bindinput="nameChange" class="input" placeholder="请输入作者"></input>
+         <input bindinput="nameChange" class="input" placeholder="请输入作者" value="{{updateBook.name}}"></input>
     </view>
      <view class="modal-alert">
     </view>
@@ -63,7 +79,7 @@
    <view class="modal-content">
    <label>出版社:</label>
     <view class="modal-input">
-         <input bindinput="addressChange" class="input" placeholder="请输入出版社"></input>
+         <input bindinput="addressChange" class="input" placeholder="请输入出版社" value="{{updateBook.address}}"></input>
     </view>
      <view class="modal-alert">
     </view>
@@ -72,7 +88,7 @@
   <view class="modal-content">
    <label>销售量:</label>
     <view class="modal-input">
-         <input bindinput="inputChange" class="input" placeholder="请输入数量"></input>
+         <input bindinput="inputChange" class="input" placeholder="请输入数量" value="{{updateBook.num}}"></input>
     </view>
      <view class="modal-alert">
     </view>
@@ -84,7 +100,7 @@
     <view class="modal-input">
     <input class="js_file" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" bindtap='uploader' name="images" placeholder="选择图片"></input>
        <view>
-         <image src="{{imagesList}}">
+         <image src="{{updateBook.img?updateBook.img:imagesList}}">
          </image>
         </view>
     </view>

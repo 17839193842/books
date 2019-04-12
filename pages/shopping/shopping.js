@@ -16,7 +16,7 @@ Page({
     //     list: res.data
     //   })
     // });
-    var shopList = wx.getStorageSync('shopList');
+    var shopList = wx.getStorageSync('shopList') || [];
      that.setData({
        list:shopList
      })

@@ -7,7 +7,9 @@ Page({
     num:0,
     tempFilePaths: [],
     empty:false,
-    list:[]
+    list:[],
+    updateBook:[],
+    update:false
   },
   onLoad: function () {
     console.log('onLoad')
@@ -20,7 +22,7 @@ Page({
     //     list: res.data
     //   })
     // });
-    var list=wx.getStorageSync('list')
+    var list=wx.getStorageSync('list') || []
     that.setData({
       list:list
     })
@@ -30,13 +32,15 @@ Page({
     this.setData({
       showModal: true,
       imagesList:[],
-      empty: false
+      empty: false,
+      updateBook: []
     })
   },
   hideModal: function () {
     this.setData({
       showModal: false,
-      empty: false
+      empty: false,
+      update: false
     });
   },
   /**
@@ -234,6 +238,59 @@ Page({
     wx.navigateTo({
       url: '../detail/detail?id=' + bookId
     })
+  },
+  // 删除图书录入
+  delEntry: function (e) {
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确认要删除？',
+      confirmText: '确认',
+      cancelText: '取消',
+      success: function (res) {
+        if (res.confirm) {
+          console.log("确认");
+          var index = e.target.dataset.i;
+          var cartList = that.data.list;
+          for (var i = 0; i < cartList.length; i++) {
+            if (cartList[i].id == index) {
+              cartList.splice(i, 1);
+            }
+          }
+          console.log(cartList)
+          that.setData({
+            list: cartList
+          })
+          wx.setStorageSync('list', cartList);
+
+        } else if (res.cancel) {
+          console.log('用户点击取消删除操作')
+        }
+      }
+    })
+  },
+  // 修改图书信息
+  updateBook:function(e){
+    this.setData({
+      update:true
+    })
+    this.showModal();
+    var that=this;
+    console.log(e)
+    var id = e.currentTarget.dataset.id;
+     var list=that.data.list;
+     list.forEach((item,index)=>{
+       if(item['id']==id){
+         that.setData({
+           updateBook:item
+         })
+       }
+     })
+   console.log(that.data.updateBook);
+  },
+  // 关闭模态框
+  cancelModal:function(e){
+    this.hideModal();
   }
 
 

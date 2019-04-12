@@ -29,7 +29,7 @@
         "selectedIconPath": "images/books.png",
         "iconPath": "images/books.png",
         "pagePath": "pages/bookentry/bookentry",
-        "text": "图书录入"
+        "text": "图书管理"
       },
       {
         "selectedIconPath": "images/user-in.png",

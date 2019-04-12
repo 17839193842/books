@@ -9,13 +9,17 @@ Page({
     console.log('onLoad')
     var that = this
     // 使用 Mock
-    API.ajax('', function (res) {
-      //这里既可以获取模拟的res
-      console.log(res)
-      that.setData({
-        list: res.data
-      })
-    });
+    // API.ajax('', function (res) {
+    //   //这里既可以获取模拟的res
+    //   console.log(res)
+    //   that.setData({
+    //     list: res.data
+    //   })
+    // });
+    var list=wx.getStorageSync('list') || [];
+    that.setData({
+      list:list
+    })
   },
   goBookDetail: function (e) { 
     var that=this;
