@@ -3,7 +3,8 @@ var app = getApp()
 var API = require('../../utils/api.js')
 Page({
   data: {
-   
+   shopList:[],
+   collectList:[]
   },
   onLoad: function (options) {
     var id=options.id
@@ -18,25 +19,44 @@ Page({
       })
     });
     console.log(this.data.list)
- 
+    var shopList = wx.getStorageSync('shopList');
+    var collectList = wx.getStorageSync('collectList')
+     
   },
   addShop:function(e){
-    console.log(e.currentTarget.dataset.id);
-    wx.showToast({ // 显示Toast
-      title: '加入购物车成功',
-      icon: 'success',
-      duration: 2000
-    })
-    this.data.list.shoped=true;
-    console.log(this.data.list)
+    var that=this;
+    var shopList = wx.getStorageSync('shopList');
+    var id=e.currentTarget.dataset.id;
+        this.data.list.shoped = true;
+        shopList.push(that.data.list)
+        wx.setStorageSync('shopList', shopList);
+        wx.showToast({ // 显示Toast
+          title: '加入购物车成功',
+          icon: 'success',
+          duration: 1000
+        })
+    setTimeout(function () {
+      wx.navigateTo({
+        url: '../shopping/shopping'
+      })
+    }, 500)
   },
   collect:function(e){
-    console.log(e.currentTarget.dataset.id);
+    var that=this;
+    var id=e.currentTarget.dataset.id;
+    var collectList = wx.getStorageSync('collectList');
+    collectList.push(that.data.list);
+    wx.setStorageSync('collectList', collectList);
     wx.showToast({ // 显示Toast
       title: '收藏成功',
       icon: 'success',
-      duration: 2000
+      duration: 1000
     })
+    setTimeout(function(){
+      wx.navigateTo({
+        url: '../collect/collect'
+      }) 
+    },500)
     this.data.list.collected = true;
     console.log(this.data.list)
   }

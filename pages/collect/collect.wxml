@@ -1,7 +1,7 @@
 <view class="container">
 <block wx:for="{{list}}" wx:key="name" class="list">
 
-  <view class="list_book">
+  <view class="list_book"  bindtap="goBookDetail" data-bookId="{{item.id}}">
     <view class="book_img">
       <image  style="background-color: #eeeeee;" src="{{item.img}}"></image>
     </view>

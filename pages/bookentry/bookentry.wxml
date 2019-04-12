@@ -1,5 +1,5 @@
 <view class="container">
- 图书录入
+ 请图书录入
  <block wx:for="{{list}}" wx:key="name" class="list">
 
   <view class="list_book" bindtap="goBookDetail" data-bookId="{{item.id}}">

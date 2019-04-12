@@ -9,15 +9,17 @@ Page({
   onLoad: function () {
     var that = this
     // 使用 Mock
-    API.ajax('', function (res) {
-      //这里既可以获取模拟的res
-      console.log(res)
-      that.setData({
-        list: res.data
-      })
-    });
-
-    console.log(this.data.list)
+    // API.ajax('', function (res) {
+    //   //这里既可以获取模拟的res
+    //   console.log(res)
+    //   that.setData({
+    //     list: res.data
+    //   })
+    // });
+    var shopList = wx.getStorageSync('shopList');
+     that.setData({
+       list:shopList
+     })
   },
   // 单选或多选
   checkboxChange:function(e){
@@ -105,6 +107,7 @@ Page({
           that.setData({
             list: cartList
           })
+          wx.setStorageSync('shopList',cartList);
 
         } else if (res.cancel) {
           console.log('用户点击取消删除操作')
@@ -127,7 +130,8 @@ Page({
     })
     that.setData({
       list:cartList
-    })
+    });
+    wx.setStorageSync('shopList', cartList)
     
   },
   // 减购物车数量
@@ -155,6 +159,14 @@ Page({
     that.setData({
       list: cartList
     })
-  }
+  },
+  // 进入详情页
+  goBookDetail: function (e) {
+    var that = this;
+    var bookId = e.currentTarget.dataset.bookid;
+    wx.navigateTo({
+      url: '../detail/detail?id=' + bookId
+    })
+  },
 
 })

@@ -13,6 +13,7 @@
   width:30%;
   overflow:hidden;
   height:100%;
+  padding-left:20rpx;
 }
 .book_img image{
    width:100%;

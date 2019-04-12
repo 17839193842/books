@@ -6,20 +6,24 @@ Page({
     showModal:false,
     num:0,
     tempFilePaths: [],
-    empty:false
+    empty:false,
+    list:[]
   },
   onLoad: function () {
     console.log('onLoad')
     var that = this
     // 使用 Mock
-    API.ajax('', function (res) {
-      //这里既可以获取模拟的res
-      console.log(res)
-      that.setData({
-        list: res.data
-      })
-    });
-
+    // API.ajax('', function (res) {
+    //   //这里既可以获取模拟的res
+    //   console.log(res)
+    //   that.setData({
+    //     list: res.data
+    //   })
+    // });
+    var list=wx.getStorageSync('list')
+    that.setData({
+      list:list
+    })
     console.log(this.data.list)
   },
   showModal:function(){
@@ -48,26 +52,30 @@ Page({
    * 对话框确认按钮点击事件
    */
   onConfirm: function () {
+    var that=this;
     this.hideModal();
     if (this.data.hasOwnProperty('title')) {
     var bookList=this.data.list;
     var book = {};
-    book.id=bookList[bookList.length-1].id+1;
+    book.id = bookList.length > 0 ? bookList[bookList.length - 1].id + 1 :1  ;
     book.num = this.data.num;
     book.price = this.data.price;
     book.title = this.data.title;
     book.name=this.data.name;
     book.address=this.data.address;
     book.img = this.data.imagesList[0];
+      console.log(bookList)
       bookList.push(book);
       this.setData({
         list: bookList
       })
       wx.showToast({ // 显示Toast
-        title: '图书更新啦',
+        title: '图书录入更新啦',
         icon: 'success',
         duration: 1500
       })
+      // 本地存储
+    wx.setStorageSync('list', that.data.list);
     }else{
       wx.showModal({
         content: '图书名不能为空',
@@ -219,6 +227,13 @@ Page({
         empty: false
       })
     }
+  },
+  goBookDetail: function (e) {
+    var that = this;
+    var bookId = e.currentTarget.dataset.bookid;
+    wx.navigateTo({
+      url: '../detail/detail?id=' + bookId
+    })
   }
 
 

@@ -16,10 +16,9 @@ Page({
         list: res.data
       })
     });
-
-    console.log(this.data.list)
   },
   goBookDetail: function (e) { 
+    var that=this;
     var bookId = e.currentTarget.dataset.bookid;
     wx.navigateTo({ 
       url: '../detail/detail?id='+bookId

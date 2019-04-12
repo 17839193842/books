@@ -17,7 +17,7 @@ function ajax(data = '', fn, method = "get", header = {}) {
     var res = Mock.mock({
       'error_code': '',
       'error_msg': '',
-      'data|10': [{
+      'data|20': [{
         'id|+1': 1,
         'name': "@cname()",
         'img': "@image(200x300, #abcdef)",

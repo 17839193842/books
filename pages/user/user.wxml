@@ -1,4 +1,6 @@
 <view class="container">
+ <!-- 用户信息 -->
+ <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
    <!-- 我的购物车 -->
    <view class="book_shop">
      <view bindtap="goShopping">
