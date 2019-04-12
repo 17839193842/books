@@ -70,7 +70,7 @@
 }
 .book_sum view text{
   color:red;
-  line-height:100rpx;
+  line-height:100%;
   text-align:center;
 }
 .book_sum button{

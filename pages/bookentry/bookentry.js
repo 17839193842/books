@@ -4,7 +4,9 @@ var API = require('../../utils/api.js')
 Page({
   data: {
     showModal:false,
-    num:0
+    num:0,
+    tempFilePaths: [],
+    empty:false
   },
   onLoad: function () {
     console.log('onLoad')
@@ -22,12 +24,15 @@ Page({
   },
   showModal:function(){
     this.setData({
-      showModal: true
+      showModal: true,
+      imagesList:[],
+      empty: false
     })
   },
   hideModal: function () {
     this.setData({
-      showModal: false
+      showModal: false,
+      empty: false
     });
   },
   /**
@@ -35,13 +40,16 @@ Page({
     */
   onCancel: function () {
     this.hideModal();
+    this.setData({
+      imagesList: []
+    })
   },
   /**
    * 对话框确认按钮点击事件
    */
   onConfirm: function () {
     this.hideModal();
-    
+    if (this.data.hasOwnProperty('title')) {
     var bookList=this.data.list;
     var book = {};
     book.id=bookList[bookList.length-1].id+1;
@@ -50,7 +58,7 @@ Page({
     book.title = this.data.title;
     book.name=this.data.name;
     book.address=this.data.address;
-    if (this.data.hasOwnProperty('title')){
+    book.img = this.data.imagesList[0];
       bookList.push(book);
       this.setData({
         list: bookList
@@ -60,6 +68,16 @@ Page({
         icon: 'success',
         duration: 1500
       })
+    }else{
+      wx.showModal({
+        content: '图书名不能为空',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          }
+        }
+      });
     }
     
   },
@@ -88,6 +106,15 @@ Page({
     this.setData({
       title: title
     })
+    if(e.detail.value!=''){
+      this.setData({
+        empty: false
+      })
+    }else{
+      this.setData({
+        empty: true
+      })
+    }
   },
   // 出版社
   addressChange:function(e){
@@ -102,6 +129,97 @@ Page({
     this.setData({
       name: name
     })
+  },
+
+
+// 上传图片
+  uploader: function () {
+    var that = this;
+    let imagesList = [];
+    let maxSize = 1024 * 1024;
+    let maxLength =1;
+    let flag = true;
+    wx.chooseImage({
+      count: 6, //最多可以选择的图片总数
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        wx.showToast({
+          title: '正在上传...',
+          icon: 'loading',
+          mask: true,
+          duration: 500
+        })
+        for (let i = 0; i < res.tempFiles.length; i++)       {
+          if (res.tempFiles[i].size > maxSize) {
+            flag = false;
+            wx.showModal({
+              content: '图片太大，不允许上传',
+              showCancel: false,
+              success: function (res) {
+                if (res.confirm) {
+                  console.log('用户点击确定')
+                }
+              }
+            });
+
+          }
+        }
+
+        if (res.tempFiles.length > maxLength) {
+          wx.showModal({
+            content: '最多能上传' + maxLength + '张图片',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                console.log('确定');
+              }
+            }
+          })
+        }
+
+        if (flag == true && res.tempFiles.length <= maxLength) {
+          that.setData({
+            imagesList: res.tempFilePaths
+          })
+        }
+
+        // wx.uploadFile({
+        //   url: 'https://shop.gxyourui.cn',
+        //   filePath: res.tempFilePaths[0],
+        //   name: 'images',
+        //   header: {
+        //     "Content-Type": "multipart/form-data",
+        //     'Content-Type': 'application/json'
+        //   },
+        //   success: function (data) {
+        //     console.log(data);
+        //   },
+        //   fail: function (data) {
+        //     console.log(data);
+        //   }
+        // })
+
+      },
+      fail: function (res) {
+        console.log(res);
+      }
+
+    })
+  },
+  // input失去焦点
+  bindblur:function(e){
+    console.log(e);
+    if(e.detail.value==''){
+      this.setData({
+        empty:true
+      })
+    }else{
+      this.setData({
+        empty: false
+      })
+    }
   }
+
 
 })
