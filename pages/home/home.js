@@ -17,23 +17,38 @@ Page({
     //   })
     // });
     var list=wx.getStorageSync('list') || [];
-    that.setData({
-      list:list
-    })
     if(list.length<=0){
-      wx.showModal({
-        content: '请先录入图书数据',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定');
-            wx.navigateTo({
-              url: '../bookentry/bookentry',
-            })
-          }
-        }
-      });
+       API.ajax('', function (res) {
+      //这里既可以获取模拟的res
+      console.log(res)
+      that.setData({
+        list: res.data
+      })
+    });
+    }else{
+      that.setData({
+        list: list
+      })
     }
+   
+    // if(list.length<=0){
+    //   wx.showModal({
+    //     content: '请先录入图书数据',
+    //     showCancel: false,
+    //     success: function (res) {
+    //       if (res.confirm) {
+    //         console.log('用户点击确定');
+    //         that.goEntry();
+    //       }
+    //     }
+    //   });
+    // }
+  },
+  goEntry:function(){
+    console.log(1111)
+    wx.navigateTo({
+      url: '../bookentry/bookentry'
+    })
   },
   goBookDetail: function (e) { 
     var that=this;
