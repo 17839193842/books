@@ -3,10 +3,11 @@ var app = getApp()
 var API = require('../../utils/api.js')
 Page({
   data: {
-    userInfo:{}
+    userInfo:{},
+    hasLocation: false
   },
   onLoad: function () {
-
+   
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -42,6 +43,13 @@ Page({
   goCollect:function(e){
     wx.navigateTo({
       url: '../collect/collect'
+    })
+  },
+  // 我的地图
+
+  locationViewTap: function () {
+    wx.navigateTo({
+      url: '../location/location'
     })
   }
  

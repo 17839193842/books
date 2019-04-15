@@ -45,3 +45,8 @@
 .usermotto {
   margin-top: 200px;
 }
+
+/* 我的位置 */
+.location{
+  display:flex;
+}
