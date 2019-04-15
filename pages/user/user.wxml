@@ -21,7 +21,15 @@
  <view class="book_collect">
     <view bindtap="locationViewTap">
        <image src="../../images/location.png"></image>
-       <text style="flex:1;margin-left:15rpx;">我的位置信息</text>  
+       <text style="flex:1;margin-left:15rpx;">位置信息</text>  
+       <text style="width:100rpx;">  > </text>
+      </view>
+   </view>
+   <!-- 我的联系方式 -->
+   <view class="book_collect">
+    <view bindtap="goTel">
+       <image src="../../images/tel.png"></image>
+       <text style="flex:1;margin-left:15rpx;">联系方式</text>  
        <text style="width:100rpx;">  > </text>
       </view>
    </view>

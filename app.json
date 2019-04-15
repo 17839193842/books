@@ -7,7 +7,8 @@
     "pages/shopping/shopping",
     "pages/collect/collect",
     "pages/bookentry/bookentry",
-    "pages/location/location"
+    "pages/location/location",
+    "pages/tel/tel"
   ],
   "window":{
     "backgroundTextStyle":"light",

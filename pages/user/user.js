@@ -51,6 +51,12 @@ Page({
     wx.navigateTo({
       url: '../location/location'
     })
+  },
+  // 联系方式
+  goTel:function(){
+    wx.navigateTo({
+      url: '../tel/tel'
+    })
   }
  
 

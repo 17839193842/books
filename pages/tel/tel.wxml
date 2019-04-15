@@ -1,0 +1,33 @@
+<view class="container">
+ <form class="form">
+  <view class="form-input">
+     <label class="label">姓名：</label>
+     <input value="{{name}}" disabled="{{disabled}}" bindblur='nameBlur'></input>
+    </view>
+     <view class="form-input">
+     <label class="label">性别：</label>
+      <radio-group name="radio-group" class="radios" bindchange="radioChange">
+      <label>
+        <radio value="男"  checked="{{checked}}" disabled='{{disabled}}'/>
+        男
+      </label>
+      <label>
+        <radio value="女"  checked="{{girlChecked}}" disabled='{{disabled}}'/>
+        女
+      </label>
+    </radio-group>
+    </view>
+     <view class="form-input">
+      <label class="label">电话：</label>
+      <input value="{{tel}}" disabled="{{disabled}}" bindblur="blurTel"></input>
+    </view>
+    <view class="form-input">
+     <label class="label">地址：</label>
+     <input value="{{address}}" disabled="{{disabled}}" bindblur='addressBlur'></input>
+    </view>
+    <view class="form-input form-button">
+      <button bindtap="updateInfo">修改</button>
+      <button type="primary" bindtap="saveInfo">提交</button>
+    </view>
+ </form>
+</view>
