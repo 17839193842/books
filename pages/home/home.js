@@ -9,13 +9,6 @@ Page({
     console.log('onLoad')
     var that = this
     // 使用 Mock
-    // API.ajax('', function (res) {
-    //   //这里既可以获取模拟的res
-    //   console.log(res)
-    //   that.setData({
-    //     list: res.data
-    //   })
-    // });
     var list=wx.getStorageSync('list') || [];
     if(list.length<=0){
        API.ajax('', function (res) {
@@ -31,18 +24,6 @@ Page({
       })
     }
    
-    // if(list.length<=0){
-    //   wx.showModal({
-    //     content: '请先录入图书数据',
-    //     showCancel: false,
-    //     success: function (res) {
-    //       if (res.confirm) {
-    //         console.log('用户点击确定');
-    //         that.goEntry();
-    //       }
-    //     }
-    //   });
-    // }
   },
   goEntry:function(){
     console.log(1111)
@@ -111,17 +92,22 @@ Page({
       searchValue: e.detail.value
     })
     if (this.data.searchValue == '') {
-      // API.ajax('', function (res) {
-      //   //这里既可以获取模拟的res
-      //   console.log(res)
-      //   that.setData({
-      //     list: res.data
-      //   })
-      // });
+     
       var list = wx.getStorageSync('list') || [];
-      that.setData({
-        list: list
-      })
+      if(list.length<=0){
+        API.ajax('', function (res) {
+          //这里既可以获取模拟的res
+          console.log(res)
+          that.setData({
+            list: res.data
+          })
+        });
+      }else{
+        that.setData({
+          list: list
+        })
+      }
+    
     }
   }
 

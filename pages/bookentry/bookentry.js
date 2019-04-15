@@ -14,18 +14,23 @@ Page({
   onLoad: function () {
     console.log('onLoad')
     var that = this
-    // 使用 Mock
-    // API.ajax('', function (res) {
-    //   //这里既可以获取模拟的res
-    //   console.log(res)
-    //   that.setData({
-    //     list: res.data
-    //   })
-    // });
-    var list=wx.getStorageSync('list') || []
-    that.setData({
-      list:list
-    })
+    
+    var list=wx.getStorageSync('list') || [];
+    // 如果本地图书数量为0,则加载mock数据
+    if(list.length<=0){
+// 使用 Mock
+      API.ajax('', function (res) {
+        //这里既可以获取模拟的res
+        console.log(res)
+        that.setData({
+          list: res.data
+        })
+      });
+    }else{
+      that.setData({
+        list: list
+      })
+    }
     console.log(this.data.list)
   },
   showModal:function(){

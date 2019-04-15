@@ -8,18 +8,21 @@ Page({
     console.log('onLoad')
     var that = this
     // 使用 Mock
-    // API.ajax('', function (res) {
-    //   //这里既可以获取模拟的res
-    //   console.log(res)
-    //   that.setData({
-    //     list: res.data
-    //   })
-    // });
+    
     var collectList = wx.getStorageSync('collectList') || [];
-    console.log(collectList)
-   that.setData({
-     list:collectList
-   })
+    if(collectList.length<=0){
+        API.ajax('', function (res) {
+          //这里既可以获取模拟的res
+          console.log(res)
+          that.setData({
+            list: res.data
+          })
+        });
+    }else{
+      that.setData({
+        list: collectList
+      })
+    }
    
   },
   // 删除

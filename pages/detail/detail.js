@@ -10,18 +10,38 @@ Page({
     var id=options.id
     var that = this
     // 使用 Mock
-    API.ajax('', function (res) {
-      //这里既可以获取模拟的res
-      var data=res.data;
-     console.log(typeof data)
-      that.setData({
-        list: data[id-1]
+    // API.ajax('', function (res) {
+    //   //这里既可以获取模拟的res
+    //   var data=res.data;
+    //  console.log(typeof data)
+    //   that.setData({
+    //     list: data[id-1]
+    //   })
+    // });
+    console.log(id)
+     var list=wx.getStorageSync('list') || [];
+     console.log(list)
+     if(list.length<=0){
+       API.ajax('', function (res) {
+        //这里既可以获取模拟的res
+        var data=res.data;
+      data.forEach((item,index)=>{
+        if(item['id']==id){
+          that.setData({
+            list: item
+          })
+        }
       })
-    });
-    console.log(this.data.list)
-    var shopList = wx.getStorageSync('shopList');
-    var collectList = wx.getStorageSync('collectList')
-     
+      });
+     }else{
+       list.forEach((item,index)=>{
+         if(item['id']==id){
+           that.setData({
+             list: item
+           })
+         }
+       })
+     }
   },
   addShop:function(e){
     var that=this;

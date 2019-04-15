@@ -8,18 +8,23 @@ Page({
   },
   onLoad: function () {
     var that = this
-    // 使用 Mock
-    // API.ajax('', function (res) {
-    //   //这里既可以获取模拟的res
-    //   console.log(res)
-    //   that.setData({
-    //     list: res.data
-    //   })
-    // });
     var shopList = wx.getStorageSync('shopList') || [];
-     that.setData({
-       list:shopList
-     })
+    // 如果本地存储的购物车数量为0,则加载mock数据
+    if(shopList.length<=0){
+       // 使用 Mock
+      API.ajax('', function (res) {
+        //这里既可以获取模拟的res
+        console.log(res)
+        that.setData({
+          list: res.data
+        })
+      });
+    }else{
+      that.setData({
+        list: shopList
+      })
+    }
+    
   },
   // 单选或多选
   checkboxChange:function(e){

@@ -17,9 +17,10 @@
 <!-- content -->
 <view class="book_content">
    <h3>内容简介</h3>
-   <view>
+   <view wx:if="{{list.text}}">
    {{list.text}}
    </view>
+   <view wx:else>内容简介内容简介内容。。。</view>
 </view>
 
 <!-- 购物车按钮 -->
