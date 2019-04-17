@@ -57,6 +57,12 @@ Page({
     wx.navigateTo({
       url: '../tel/tel'
     })
+  },
+  // 相册
+  goPhoto:function(){
+    wx.navigateTo({
+      url: '../photo/photo'
+    })
   }
  
 

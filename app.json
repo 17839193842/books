@@ -8,7 +8,8 @@
     "pages/collect/collect",
     "pages/bookentry/bookentry",
     "pages/location/location",
-    "pages/tel/tel"
+    "pages/tel/tel",
+    "pages/photo/photo"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -33,6 +33,14 @@
        <text style="width:100rpx;">  > </text>
       </view>
    </view>
+<!-- 我的相册 -->
+   <view class="book_collect">
+    <view bindtap="goPhoto">
+       <image src="../../images/photo.png"></image>
+       <text style="flex:1;margin-left:15rpx;">我的相册</text>  
+       <text style="width:100rpx;">  > </text>
+      </view>
+   </view>
 
 
 
