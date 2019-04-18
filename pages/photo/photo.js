@@ -3,7 +3,8 @@ Page({
   data:{
     camera:false,
     showModal:false,
-    photoed:false
+    photoed:false,
+    front:'back'
   },
   onLoad:function(){
 
@@ -46,5 +47,19 @@ Page({
   // 保存拍照
   savePhoto:function(){
     this.hideModal();
+  },
+  // 切换前置摄像头
+  tabPhoto:function(){
+     var front=this.data.front;
+     if(front=='back'){
+       this.setData({
+         front: 'front'
+       })
+     }else{
+       this.setData({
+         front: 'back'
+       })
+     }
+     
   }
 })
