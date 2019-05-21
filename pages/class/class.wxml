@@ -1,0 +1,36 @@
+<view class="container">
+ <!-- 选项卡 -->
+  <view class="tab-box">
+      <text bindtap='changTab' class="{{currentTab=='a' ? 'active' : ''}}" data-current='a'>漫画</text>
+      <text bindtap='changTab' class="{{currentTab=='b' ? 'active' : ''}}" data-current='b'>小说</text>
+      <text bindtap='changTab' class="{{currentTab=='c' ? 'active' : ''}}" data-current='c'>古诗</text>
+      <text bindtap='changTab' class="{{currentTab=='d' ? 'active' : ''}}" data-current='d'>哲学</text>
+      <text bindtap='changTab' class="{{currentTab=='e' ? 'active' : ''}}" data-current='e'>技术</text>
+      <text bindtap='changTab' class="{{currentTab=='f' ? 'active' : ''}}" data-current='f'>历史</text>
+    </view>
+    
+    <!-- mock数据 -->
+<block wx:for="{{list}}" wx:key="name" class="list">
+
+  <view class="list_book" bindtap="goBookDetail" data-bookId="{{item.id}}">
+    <view class="book_img">
+      <image  style="background-color: #eeeeee;" src="{{item.img}}"></image>
+    </view>
+    <view class="book_info">
+      <view><text>书名:</text>{{item.title}}</view>
+      <view><text>价格:</text>{{item.price}}元</view>
+      <view><text>出版社:</text>{{item.address}}</view>
+      <view><text>作者:</text>{{item.name}} </view>
+      <view><text>销售量:</text>{{item.num}}</view>
+    </view>
+  </view>
+</block>
+
+<!-- 无数据 -->
+<block class="list" wx:if="{{list.length<=0}}">
+ <view class="empty">
+   抱歉，没有查找到你想要的书籍。。。
+ </view>
+</block>
+
+</view>

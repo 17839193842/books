@@ -16,7 +16,7 @@
 
 <!-- content -->
 <view class="book_content">
-   <h3>内容简介</h3>
+   <h3> <text>内容简介</text>  <button type="primary" open-type="share" bindtap="onShareAppMessage">分享</button></h3>
    <view wx:if="{{list.text}}">
    {{list.text}}
    </view>

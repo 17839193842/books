@@ -38,7 +38,8 @@ Page({
       showModal: true,
       imagesList:[],
       empty: false,
-      updateBook: []
+      updateBook: [],
+      title:''
     })
   },
   hideModal: function () {
@@ -63,7 +64,7 @@ Page({
   onConfirm: function () {
     var that=this;
     this.hideModal();
-    if (this.data.hasOwnProperty('title')) {
+    if (this.data.title!='') {
     var bookList=this.data.list;
     var book = {};
     book.id = bookList.length > 0 ? bookList[bookList.length - 1].id + 1 :1  ;
@@ -72,6 +73,7 @@ Page({
     book.title = this.data.title;
     book.name=this.data.name;
     book.address=this.data.address;
+    book.type = this.data.type;
     book.img = this.data.imagesList[0];
       console.log(bookList)
       bookList.push(book);
@@ -108,6 +110,13 @@ Page({
     var num=parseInt(e.detail.value);
     this.setData({
       num:num
+    })
+  },
+  // 类型
+  inputType(e){
+    var type = e.detail.value;
+    this.setData({
+      type: type
     })
   },
   // 价格
@@ -287,7 +296,8 @@ Page({
      list.forEach((item,index)=>{
        if(item['id']==id){
          that.setData({
-           updateBook:item
+           updateBook:item,
+           title:item.title
          })
        }
      })

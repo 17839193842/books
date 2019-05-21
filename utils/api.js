@@ -27,9 +27,13 @@ function ajax(data = '', fn, method = "get", header = {}) {
         'num': '@integer(0,100)',//库存数量  
         'price': '@integer(100,2000)',//现价，单位：元
         'checked':false,
-        'total':1
+        'total':1,
+        'type': '@character("abcdef")'
+
       }]
     })
+   
+
     // 输出结果
     // console.log(JSON.stringify(res, null, 2))
     fn(res);

@@ -47,6 +47,22 @@
 }
 .book_content h3{
   font-weight:bold;
+  display:flex;
+  height:60rpx;
+  line-height:60rpx;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width:100%;
+}
+.book_content h3 text{
+  width:60%;
+}
+.book_content h3 button{
+  font-size:32rpx;
+  padding:10rpx 10rpx;
+  height: 60rpx;
+  line-height: 50rpx;
 }
 .book_content view{
   margin-top:15rpx;

@@ -9,7 +9,9 @@
     "pages/bookentry/bookentry",
     "pages/location/location",
     "pages/tel/tel",
-    "pages/photo/photo"
+    "pages/photo/photo",
+    "pages/component/component",
+    "pages/class/class"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -33,6 +35,12 @@
         "iconPath": "images/books.png",
         "pagePath": "pages/bookentry/bookentry",
         "text": "图书管理"
+      },
+      {
+        "selectedIconPath": "images/collect.png",
+        "iconPath": "images/collect.png",
+        "pagePath": "pages/class/class",
+        "text": "分类"
       },
       {
         "selectedIconPath": "images/user-in.png",

@@ -29,7 +29,7 @@ Page({
         if(item['id']==id){
           that.setData({
             list: item
-          })
+          }) 
         }
       })
       });
@@ -79,6 +79,16 @@ Page({
     },500)
     this.data.list.collected = true;
     console.log(this.data.list)
+  },
+
+  // 分享功能
+  onShareAppMessage: function () {
+    return {
+      title: '自定义分享标题',
+      desc: '自定义分享描述',
+      path: '/page/component/component'
+    }
+
   }
 
 })

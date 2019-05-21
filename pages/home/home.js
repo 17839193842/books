@@ -6,7 +6,6 @@ Page({
     searchValue: ''
   },
   onLoad: function () {
-    console.log('onLoad')
     var that = this
     // 使用 Mock
     var list=wx.getStorageSync('list') || [];
@@ -23,7 +22,7 @@ Page({
         list: list
       })
     }
-   
+    
   },
   goEntry:function(){
     console.log(1111)

@@ -93,6 +93,15 @@
      <view class="modal-alert">
     </view>
   </view>
+   <!-- 图书类型 -->
+  <view class="modal-content">
+   <label>类型:</label>
+    <view class="modal-input">
+         <input bindinput="inputType" class="input" placeholder="请输入类型" value="{{updateBook.type}}"></input>
+    </view>
+     <view class="modal-alert">
+    </view>
+  </view>
 
    <!-- 书面 -->
    <view class="book_images">

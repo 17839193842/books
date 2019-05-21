@@ -32,9 +32,7 @@
   <image mode="widthFix" src="{{src}}"></image>
   </view>
 </view>
-
 <button type="primary" bindtap="photo">我要拍照</button>
-
 </view>
 
 
